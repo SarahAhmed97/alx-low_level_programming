@@ -1,6 +1,4 @@
-#include "main.h"
 #include "holberton.h"
-#include <stdio.h>
 
 /**
   * rev_string - Reverses a string
@@ -10,16 +8,26 @@
   */
 void rev_string(char *s)
 {
-	int l, i;
-	char temp;
+	int i, c, k;
+	char *a, aux;
 
-	for (l = 0; s[1] != '\0'; ++l)
-		;
+	a = s;
 
-	for (i = 0; i < l / 2; i++)
+	while (s[c] != '\0')
 	{
-		temp = s[i];
-		s[i] = s[l - 1 - i];
-		s[l - 1 - i] = temp;
+		c++;
+	}
+
+	for (k = 1; k < c; k++)
+	{
+		a++;
+	}
+
+	for (i = 0; i < (c / 2); i++)
+	{
+		aux = s[i];
+		s[i] = *a;
+		*a = aux;
+		a--;
 	}
 }
