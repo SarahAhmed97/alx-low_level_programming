@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 /**
- * rev_string - reverse a string
- * @s: the input string
+ * rev_string - Reverse a string
+ * @s: The input string
  *
  * Return: void
  */
