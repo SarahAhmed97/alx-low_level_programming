@@ -3,19 +3,19 @@
 /**
  * puts_half - Prints half of a string,
  * followed by a new line.
- * @str: The string to be treated
+ * @str: The string to print
  *
  * Return: void
  */
 void puts_half(char *str)
 {
 	int i;
+	int j = 0;
 
-	for (i = 0; str[i] != '\0'; ++i)
-		;
+	while (str[j] != '\0')
+		j++;
 
-	i++;
-	for (i /= 2; str[i] != '0'; i++)
+	for (i = 0; i < j; i += 2)
 		_putchar(str[i]);
 
 	_putchar('\n');
