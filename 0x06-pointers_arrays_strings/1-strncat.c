@@ -4,7 +4,6 @@
 /**
  * _strncat - concatenates two strings
  * it will use at most n bytes from src
- *
  * @dest: pointer to destination string
  * @src: pointer to source string
  * @n: most number of bytes from @src
@@ -17,11 +16,18 @@ char *_strncat(char *dest, char *src, int n);
 
 	c = 0;
 
-	while (dest[i++])
+	while (dest[c] != '\0')
 		c++;
 
-	for (i = 0; i < n && src[i]; i++)
-		dest[c++] = src[i];
+	i = 0;
 
-return (dest);
+	while (i < n && src[i] != '\0')
+	{
+		dest[c] = src[i];
+		c++;
+		i++;
+	}
+
+	dest[c] = '\0';
+	return (dest);
 }
