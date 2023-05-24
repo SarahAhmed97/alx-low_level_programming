@@ -31,11 +31,11 @@ int op_sub(int a, int b)
 
 
 /**
- * int op_mul - returns the product of 2 integers
- *@a: 1st int
- *@b: 2nd int
+ * op_mul - returns the product of 2 integers
+ * @a: 1st int
+ * @b: 2nd int
  *
- *Return: multiblication
+ * Return: multiblication
  */
 
 int op_mul(int a, int b)
@@ -64,7 +64,8 @@ int op_div(int a, int b)
 }
 
 /**
- * op_mod: returns the remainder of the division of 2 integers
+ * op_mod - returns the remainder of the division
+ * of 2 integers
  * @a: 1st int
  * @b: 2nd int
  *
