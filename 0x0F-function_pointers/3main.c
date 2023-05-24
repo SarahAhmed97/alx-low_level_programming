@@ -3,12 +3,13 @@
 #include <stdio.h>
 
 /**
-  * main - check the code
-  * @argc: number of arguments
-  * @argv: argument vector
-  *
-  * Return: 0
-  */
+ * main - check the code
+ * @argc: number of args
+ * @argv: argument vector
+ *
+ * Return: 0
+ */
+
 int main(int argc, char *argv[])
 {
 	int (*oprt)(int, int);
