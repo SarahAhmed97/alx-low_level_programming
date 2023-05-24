@@ -1,28 +1,49 @@
-#include "function_pointers.h"
 #include <stdlib.h>
 #include <stdio.h>
 
 /**
- * main - check the code
- * @argc: number of args
- * @argv: argument vector
+ * print_opcodes - print the opcodes of this program
+ * @a: address of the main function
+ * @n: number of bytes to print
  *
- * Return: 0
+ * Return: void
  */
+void print_opcodes(char *a, int n)
+{
+	int i;
 
+	for (i = 0; i < n; i++)
+	{
+		printf("%.2hhx", a[i]);
+		if (i < n - 1)
+			printf(" ");
+	}
+	printf("\n");
+
+}
+
+/**
+ * main - prints the opcodes of its own main function
+ * @argc: number of arguments passed to the function
+ * @argv: array of pointers to arguments
+ *
+ * Return: always O
+ */
 int main(int argc, char **argv)
 {
-	char *p = (char *)main;
-	int b;
+	int n;
 
 	if (argc != 2)
-		printf("Erroe\n"), exit(1);
-	b = atoi(argv[1]);
-
-	if (b < 0)
-		printf("Erroe\n"), exit(2);
-
-	while (b--)
-		printf("%02hhx%s", *p++, b ? "" : "\n");
+	{
+		printf("Error\n");
+		exit(1);
+	}
+	n = atoi(argv[1]);
+	if (n < 0)
+	{
+		printf("Error\n");
+		exit(2);
+	}
+	print_opcodes((char *)&main, n);
 	return (0);
 }
