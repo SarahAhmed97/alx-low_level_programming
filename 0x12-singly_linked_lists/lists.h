@@ -11,7 +11,7 @@
  * @len: int
  * @next: points to the next node
  *
- * Return: 0
+ * Description: singly linked list node
  */
 typedef struct lists_s
 {
