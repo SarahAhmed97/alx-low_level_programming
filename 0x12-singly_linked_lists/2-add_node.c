@@ -3,7 +3,7 @@
 /**
  * add_node - add a new node at the beginning of a list_t list
  * @head: pointer's address to head node
- * @st: str field of node
+ * @str: str field of node
  *
  * Return: size of int
  */
@@ -29,4 +29,3 @@ list_t *add_node(list_t **head, const char *str)
 	*head = new_head;
 	return (new_head);
 }
-
