@@ -6,9 +6,9 @@
 #include <string.h>
 
 /**
- * STRUCT LISTS_S - SINGLY LINKED LIST
- * @STR: STRING - (MALLOC STRING)
- * @LEN: LENGTH OF THE STRING
+ * struct lists_s - singly linked list
+ * @str: string
+ * @len: int
  * @next: points to the next node
  *
  * Return: 0
