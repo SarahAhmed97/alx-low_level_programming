@@ -6,19 +6,19 @@
 #include <string.h>
 
 /**
- * struct lists_s - singly linked list
+ * struct list_s - singly linked list
  * @str: string
  * @len: int
  * @next: points to the next node
  *
  * Description: singly linked list node
  */
-typedef struct lists_s
+typedef struct list_s
 {
 	char *str;
 	unsigned int len;
 	struct lists_s *next;
-} lists_t;
+} list_t;
 
 int _putchar(char c);
 int _strken(char *s);
