@@ -1,62 +1,63 @@
 #include "lists.h"
 
 /**
- * find_listint_loop_fl - finds a loop in a linked list
- * @head: linked list to search
- * @Return: address of node where loop starts/returns,
- * NULL if no loop
+ * _ra - reallocates memory for an array of pointers
+ * to the nodes in a linked list
+ * @list: the old list to append
+ * @size: size of the new list (always one more than the old list)
+ * @new: new node to add to the list
+ *
+ * Return: pointer to the new list
  */
-listint_t *find_listinit_loop_fl(listint_t *head)
+listint_t **_ra(listint_t **list, size_t size, listint_t *new)
 {
-	listint_t *ptr, *end;
+	listint_t **newlist;
+	size_t i;
 
-	if (head == NULL)
-		return (NULL);
-
-	for (end = head->next; end != NULL; end = end->next)
+	newlist = malloc(size * sizeof(listint_t *));
+	if (newlist == NULL)
 	{
-		if (end == end->next)
-			return (end);
-		for (ptr = head; ptr != end; ptr = ptr->next)
-			if (ptr == end->next)
-				return (end->next);
+		free(list);
+		exit(98);
 	}
-	return (NULL);
+	for (i = 0; i < size - 1; i++)
+		newlist[i] = list[i];
+	newlist[i] = new;
+	free(list);
+	return (newlist);
 }
 
-
 /**
- * free_listint_safe - frees a listint list, even if it has a loop
- * @h:head of list
- * Return: number of nodes freed
+ * free_listint_safe - frees a listint_t linked list.
+ * @head: double pointer to the start of the list
+ *
+ * Return: the number of nodes in the list
  */
-size_t free_listint_safe(listint_t **h)
+size_t free_listint_safe(listint_t **head)
 {
-	listint_t *next, *loopnode;
-	size_t len;
-	int loop = 1;
+	size_t i, num = 0;
+	listint_t **list = NULL;
+	listint_t *next;
 
-	if (h == NULL || *h == NULL)
-		return (0);
-	loopnode = find_listint_loop_fl(*h);
-	for (len = 0; (*h != loopnode || loop) && *h != NULL; *h = next)
+	if (head == NULL || *head == NULL)
+		return (num);
+	while (*head != NULL)
 	{
-		len++;
-		next = (*h)->next;
-		if (*h == loopnode && loop)
+		for (i = 0; i < num; i++)
 		{
-			if (loopnode == loopnode->next)
+			if (*head == list[i])
 			{
-				free(*h);
-				break;
+				*head = NULL;
+				free(list);
+				return (num);
 			}
-			len++;
-			next = next->next;
-			free((*h)->next);
-			loop = 0;
 		}
-		free(*h);
+		num++;
+		list = _ra(list, num, *head);
+		next = (*head)->next;
+		free(*head);
+		*head = next;
 	}
-	*h = NULL;
-	return (len);
+	free(list);
+	return (num);
 }
